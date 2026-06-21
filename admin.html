@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dingo Admin</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/all.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body">
+  <main class="admin-shell">
+    <section id="loginPanel" class="login-panel">
+      <div class="login-card">
+        <p class="eyebrow">Restaurant Control Room</p>
+        <h1>Welcome back</h1>
+        <p class="muted">Sign in to manage bookings, gallery images and website details.</p>
+        <form id="loginForm">
+          <label>Username<input name="username" autocomplete="username" required></label>
+          <label>Password<input name="password" type="password" autocomplete="current-password" required></label>
+          <button type="submit">Sign in</button>
+          <p id="loginMessage" class="form-message"></p>
+        </form>
+      </div>
+    </section>
+
+    <section id="dashboardPanel" class="dashboard-panel" hidden>
+      <aside class="admin-sidebar">
+        <div>
+          <p class="eyebrow">Dingo Admin</p>
+          <h2>Dashboard</h2>
+        </div>
+        <nav>
+          <a href="#bookings">Bookings</a>
+          <a href="#gallery">Menu Images</a>
+          <a href="#settings">Website Settings</a>
+          <a href="#home-images">Homepage Images</a>
+        </nav>
+        <button id="logoutButton" class="ghost-button">Log out</button>
+      </aside>
+
+      <div class="admin-content">
+        <header class="admin-topbar">
+          <div>
+            <p class="eyebrow">Live Site Manager</p>
+            <h1>Hotel and restaurant website dashboard</h1>
+          </div>
+          <a href="index.html" target="_blank">View public site</a>
+        </header>
+
+        <section id="bookings" class="admin-card">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Reservations</p>
+              <h2>Table bookings</h2>
+            </div>
+            <button id="refreshBookings" class="ghost-button">Refresh</button>
+          </div>
+          <div id="bookingsList" class="booking-list"></div>
+        </section>
+
+        <section id="gallery" class="admin-card">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Cloudinary</p>
+              <h2>Menu and item images</h2>
+            </div>
+          </div>
+          <form id="galleryForm" class="grid-form">
+            <label>Title<input name="title" placeholder="Chef special menu" required></label>
+            <label>Image Type<select name="type"><option value="menu">Full menu image</option><option value="item">Individual item image</option></select></label>
+            <label>Cloudinary URL<input name="imageUrl" placeholder="https://res.cloudinary.com/..."></label>
+            <label>Or Upload File<input name="image" type="file" accept="image/*"></label>
+            <button type="submit">Save image</button>
+            <p id="galleryMessage" class="form-message"></p>
+          </form>
+          <div id="galleryList" class="image-list"></div>
+        </section>
+
+        <section id="settings" class="admin-card">
+          <p class="eyebrow">Public Details</p>
+          <h2>Website settings</h2>
+          <form id="settingsForm" class="grid-form"></form>
+        </section>
+
+        <section id="home-images" class="admin-card">
+          <p class="eyebrow">Cloudinary URLs</p>
+          <h2>Homepage image settings</h2>
+          <form id="imagesForm" class="grid-form"></form>
+        </section>
+      </div>
+    </section>
+  </main>
+  <script src="js/admin.js"></script>
+</body>
+</html>

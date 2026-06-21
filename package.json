@@ -1,0 +1,17 @@
+{
+  "name": "sellable-hotel-restaurant-template",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "node server.js",
+    "check": "node --check api/index.js && node --check js/admin.js && node --check js/bookings.js && node --check js/gallery.js && node --check js/settings.js && node --check server.js",
+    "smoke": "node scripts/smoke-test.js"
+  },
+  "dependencies": {
+    "cloudinary": "^2.7.0",
+    "cookie-parser": "^1.4.7",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "multer": "^2.1.1"
+  }
+}
