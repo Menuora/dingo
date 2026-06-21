@@ -1,0 +1,13 @@
+.site-brand-name { margin-left: 12px; font-family: "Lora", serif; font-weight: 700; color: #2c3033; vertical-align: middle; }
+.review_part, .blog_section { display: none !important; }
+.booking-message { margin-top: 16px; color: #fff; font-weight: 700; }
+.regervation_part button.btn_4 { border: 0; cursor: pointer; }
+.site-map iframe { width: 100%; min-height: 190px; border: 0; }
+.public-gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px; }
+.public-gallery-card { background: #fff; box-shadow: 0 10px 30px rgba(0,0,0,.08); }
+.public-gallery-card img { width: 100%; height: 280px; object-fit: cover; display: block; }
+.public-gallery-card div { padding: 22px; }
+.public-gallery-card span { color: #ff6426; text-transform: uppercase; font-weight: 700; font-size: 12px; }
+.public-gallery-card h3 { margin: 8px 0 0; font-size: 22px; }
+@media (max-width: 991px) { .public-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 575px) { .public-gallery { grid-template-columns: 1fr; } .site-brand-name { display: block; margin: 8px 0 0; } }
