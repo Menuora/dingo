@@ -18,12 +18,14 @@
     event.preventDefault();
     const message = document.getElementById("bookingMessage");
     message.textContent = "Sending booking...";
-    const response = await fetch("/api/bookings", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(Object.fromEntries(new FormData(form).entries())) });
-    if (response.ok) {
+    try {
+      if (!window.dbApi) throw new Error("Database layer is not loaded.");
+      const formData = Object.fromEntries(new FormData(form).entries());
+      await window.dbApi.dbAddBooking(formData);
       form.reset();
       message.textContent = "Thank you. Your table request has been received.";
-    } else {
-      message.textContent = (await response.json()).error || "Please check the form and try again.";
+    } catch (error) {
+      message.textContent = error.message || "Please check the form and try again.";
     }
   });
 })();

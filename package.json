@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "node server.js",
-    "check": "node --check api/index.js && node --check js/admin.js && node --check js/bookings.js && node --check js/gallery.js && node --check js/settings.js && node --check server.js",
+    "check": "node --check api/index.js && node --check js/admin.js && node --check js/bookings.js && node --check js/gallery.js && node --check js/settings.js && node --check js/firebase-db.js && node --check js/env.js && node --check js/env.example.js && node --check server.js",
     "smoke": "node scripts/smoke-test.js"
   },
   "dependencies": {

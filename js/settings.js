@@ -1,14 +1,13 @@
 (async function () {
-  const defaults = {
-    settings: { restaurantName: "Dingo Restaurant", facebookLink: "#", instagramLink: "#", twitterLink: "#", openingTime: "10:00 AM", closingTime: "11:00 PM", googleMapsEmbed: "" },
-    images: {}
-  };
-  let data = defaults;
+  let data = { settings: {}, images: {} };
   try {
-    const response = await fetch("/api/settings");
-    if (response.ok) data = await response.json();
-  } catch (error) {}
-  const settings = { ...defaults.settings, ...(data.settings || {}) };
+    if (window.dbApi) {
+      data = await window.dbApi.dbGetSettings();
+    }
+  } catch (error) {
+    console.error("Failed to load settings:", error);
+  }
+  const settings = data.settings || {};
   const images = data.images || {};
 
   document.querySelectorAll(".navbar-brand").forEach((brand) => {

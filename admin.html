@@ -32,9 +32,11 @@
         </div>
         <nav>
           <a href="#bookings">Bookings</a>
+          <a href="#messages">Messages</a>
           <a href="#gallery">Menu Images</a>
           <a href="#settings">Website Settings</a>
           <a href="#home-images">Homepage Images</a>
+          <a href="#change-password">Security</a>
         </nav>
         <button id="logoutButton" class="ghost-button">Log out</button>
       </aside>
@@ -57,6 +59,17 @@
             <button id="refreshBookings" class="ghost-button">Refresh</button>
           </div>
           <div id="bookingsList" class="booking-list"></div>
+        </section>
+
+        <section id="messages" class="admin-card">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Customer Inquiries</p>
+              <h2>Contact messages</h2>
+            </div>
+            <button id="refreshMessages" class="ghost-button">Refresh</button>
+          </div>
+          <div id="messagesList" class="booking-list"></div>
         </section>
 
         <section id="gallery" class="admin-card">
@@ -88,9 +101,27 @@
           <h2>Homepage image settings</h2>
           <form id="imagesForm" class="grid-form"></form>
         </section>
+
+        <section id="change-password" class="admin-card">
+          <p class="eyebrow">Security</p>
+          <h2>Change admin password</h2>
+          <form id="passwordForm" class="grid-form">
+            <label>Current Password<input name="currentPassword" type="password" required></label>
+            <label>New Password<input name="newPassword" type="password" required></label>
+            <label>Confirm New Password<input name="confirmPassword" type="password" required></label>
+            <button type="submit">Update password</button>
+            <p id="passwordMessage" class="form-message"></p>
+          </form>
+        </section>
       </div>
     </section>
   </main>
+  <!-- Firebase Compat SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+  <script src="js/env.js"></script>
+  <script src="js/firebase-db.js"></script>
   <script src="js/admin.js"></script>
 </body>
 </html>

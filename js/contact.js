@@ -55,28 +55,38 @@ $(document).ready(function(){
                 }
             },
             submitHandler: function(form) {
-                $(form).ajaxSubmit({
-                    type:"POST",
-                    data: $(form).serialize(),
-                    url:"contact_process.php",
-                    success: function() {
-                        $('#contactForm :input').attr('disabled', 'disabled');
-                        $('#contactForm').fadeTo( "slow", 1, function() {
-                            $(this).find(':input').attr('disabled', 'disabled');
-                            $(this).find('label').css('cursor','default');
-                            $('#success').fadeIn()
-                            $('.modal').modal('hide');
-		                	$('#success').modal('show');
-                        })
-                    },
-                    error: function() {
-                        $('#contactForm').fadeTo( "slow", 1, function() {
-                            $('#error').fadeIn()
-                            $('.modal').modal('hide');
-		                	$('#error').modal('show');
-                        })
-                    }
-                })
+                const formData = Object.fromEntries(new FormData(form).entries());
+                const handleSuccess = function() {
+                    $('#contactForm :input').attr('disabled', 'disabled');
+                    $('#contactForm').fadeTo( "slow", 1, function() {
+                        $(this).find(':input').attr('disabled', 'disabled');
+                        $(this).find('label').css('cursor','default');
+                        $('#success').fadeIn();
+                        $('.modal').modal('hide');
+                        $('#success').modal('show');
+                    });
+                };
+                const handleError = function() {
+                    $('#contactForm').fadeTo( "slow", 1, function() {
+                        $('#error').fadeIn();
+                        $('.modal').modal('hide');
+                        $('#error').modal('show');
+                    });
+                };
+
+                if (window.dbApi) {
+                    window.dbApi.dbAddContactMessage(formData)
+                        .then(handleSuccess)
+                        .catch(handleError);
+                } else {
+                    $(form).ajaxSubmit({
+                        type:"POST",
+                        data: $(form).serialize(),
+                        url:"contact_process.php",
+                        success: handleSuccess,
+                        error: handleError
+                    });
+                }
             }
         })
     })
